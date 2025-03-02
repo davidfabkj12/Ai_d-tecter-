@@ -3,6 +3,29 @@ import tensorflow as tf
 import numpy as np
 import cv2
 from PIL import Image
+import requests
+import os
+
+# ID du fichier Google Drive
+FILE_ID = "1-1ckAIrf02miY6uyId8rXPOfhn_p-mhb"
+DOWNLOAD_URL = f"https://drive.google.com/uc?export=download&id={FILE_ID}"
+MODEL_PATH = "ai_image_detector.h5"
+
+@st.cache_resource
+def load_model():
+    """Télécharge et charge le modèle TensorFlow si nécessaire"""
+    if not os.path.exists(MODEL_PATH):
+        with st.spinner("Téléchargement du modèle... ⏳ (Cela peut prendre quelques secondes)"):
+            response = requests.get(DOWNLOAD_URL, stream=True)
+            with open(MODEL_PATH, "wb") as f:
+                for chunk in response.iter_content(chunk_size=1024):
+                    f.write(chunk)
+    return tf.keras.models.load_model(MODEL_PATH)
+
+# Charger le modèle UNE SEULE FOIS
+model = load_model()
+
+st.success("Modèle chargé avec succès ✅")
 
 # Charger le modèle entraîné
 model_path = "ai_image_detector.h5"  # Assure-toi que ton modèle est bien sauvegardé ici
