@@ -6,9 +6,6 @@ from PIL import Image
 import requests
 import os
 
-# Installation des dépendances au démarrage
-os.system("pip install --upgrade pip")
-os.system("pip install streamlit tensorflow numpy opencv-python-headless requests pillow torch torchvision")
 # ID du fichier Google Drive
 FILE_ID = "1-1ckAIrf02miY6uyId8rXPOfhn_p-mhb"
 DOWNLOAD_URL = f"https://drive.google.com/uc?export=download&id={FILE_ID}"
