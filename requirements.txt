@@ -1,7 +1,7 @@
 streamlit
-tensorflow==2.17.0
-torch==2.0.1
-torchvision==0.15.2
+tensorflow
+torch
+torchvision
 numpy
 opencv-python-headless
 requests
