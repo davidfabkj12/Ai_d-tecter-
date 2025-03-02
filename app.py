@@ -64,3 +64,4 @@ if uploaded_image is not None:
         label, confidence = predict_image(image)
         st.write(f"### Résultat : {label}")
         st.write(f"🧠 Confiance du modèle : **{confidence:.2%}**")
+        st.write(f"🧠 Confiance du modèle : **{confidence:.2%}**")
